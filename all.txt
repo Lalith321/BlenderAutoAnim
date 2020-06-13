@@ -1,0 +1,57 @@
+----------------------recordData--------------------------------
+import numpy as np
+import tensorflow as tf
+import bpy
+from bpy import context
+import PIL
+
+
+armature = "Armature" # change this to the name of your armature 
+arm_data = bpy.data.objects[armature]
+sce = bpy.context.scene
+objs = sce.objects
+
+#print(objs[armature])
+
+img = []
+z = []
+
+def final_data(f):
+    sce.frame_set(f)
+    z = [bone.rotation_quaternion[:] for bone in arm_data.pose.bones[:]]
+    return z
+    
+ar = [final_data(f) for f in range(sce.frame_start,sce.frame_end+1)]
+print(np.asarray(ar))
+print(np.asarray(ar).shape)
+
+#w,x,y,z = cv2.split(ar)
+
+----------------------------writeData--------------------------------------
+import bpy
+
+sce = bpy.context.scene
+
+arm_data = bpy.data.objects["Armature"]
+
+#arm_data.select_set(True) /Can Select multiple objects
+
+bpy.context.view_layer.objects.active = arm_data
+bpy.context.object.rotation_mode = "QUATERNION"
+
+bpy.ops.object.mode_set(mode='POSE')
+
+#def assign_key(key):
+#    sce.frame_set(key)
+#    a = [assign(key,bone) for bone in bpy.context.object.pose.bones[:]]
+#    
+
+#def assign(p_key,bone):
+#        bone.rotation_quaternion[2] = p_key
+#        bone.keyframe_insert(data_path="location",frame=p_key,index=2)
+    
+for i in range(sce.frame_start,sce.frame_end+1):
+    for bone in arm_data.pose.bones[:]:
+        bone.rotation_quaternion[2] = 2
+        #print("x")
+    #print("y")
