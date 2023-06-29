@@ -10,9 +10,11 @@ This might be due to lesser convolution samples which also corresponds to bigger
 https://github.com/Lalith321/BlenderAutoAnim/assets/51789163/fdcc7363-48e5-4508-9e97-864ab56e02f8
 
 Below is a pose from one of the videos that closely resembles a dance move that has negligible errors.
+
 ![image](https://github.com/Lalith321/BlenderAutoAnim/assets/51789163/7b383639-7b29-469a-add6-70604cb46613)
 
 While the image here has its leg completely twisted.
+
 ![image](https://github.com/Lalith321/BlenderAutoAnim/assets/51789163/1d2b7757-3705-428a-a0f3-fbc34000a042)
 
 I am still working on this to get desirable result.
